@@ -1,6 +1,8 @@
 const fs = require("fs"); 
  var listtask = [];  
-
+ var filename;
+ //read default file
+function readDefaultFile(){
  //catch any error
  try{
 // Read database.json file 
@@ -14,14 +16,35 @@ fs.readFile("database.json", 'utf8',function(err, data) {
    // const tasks = JSON.stringify(data); 
      */ 
     listtask = data.split(',');
-    console.log(listtask); // Print tasks 
+    list(); // Print tasks 
 
 }); 
  }catch(err){
    console.log("No tasks file!");
-  
- }
 
+ }
+}
+function readFile(filename){
+  
+    fs.readFile(filename,'utf8',(err,data)=>{
+      if (err){
+        return console.log("No tasks old file! we will create a new one");
+      }
+      listtask = data.split(',');
+      list();
+    });
+  
+
+}
+/*
+function createNewFile(filename){
+
+  fs.writeFileSync(filename, listtask.toString(), function (err) {
+    listtask = data.split(',');
+    if (err) return console.log(err);
+    console.log('couldent write to file!');
+  });
+}*/
 
 /**
  * Starts the application
@@ -37,8 +60,15 @@ function startApp(name){
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
   process.stdin.on('data', onDataReceived);
-  
+  if(process.argv[2]){
+    filename = process.argv[2];
+    readFile(filename);
+  }else{
+    filename = "database.json";
+    readDefaultFile();
+  }
   console.log(`Welcome to ${name}'s application!`)
+  
   console.log("--------------------")
  
 }
@@ -236,7 +266,7 @@ function unCheck(state){
  */
 function quit(){
  
-  fs.writeFileSync('database.json', listtask.toString(), function (err) {
+  fs.writeFileSync(filename, listtask.toString(), function (err) {
   if (err) return console.log(err);
   console.log('couldent write to file!');
   });

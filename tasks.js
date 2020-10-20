@@ -105,7 +105,7 @@ function help(){
 
 function list(){
   for (let index = 0; index < listtask.length; index++){
-    console.log(index + "- " + listtask[index]);
+    console.log(index +1 + "- " + listtask[index]);
   } 
 }
 

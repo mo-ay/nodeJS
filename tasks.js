@@ -50,6 +50,10 @@ function onDataReceived(text) {
     remove(text[1]);
   }else if (text[0] === 'edit'){
     edit(text[1]);
+  }else if (text[0] === 'check'){
+    check(text[1]);
+  }else if (text[0] === 'uncheck'){
+    unCheck(text[1]);
   }else{
     unknownCommand(text);
   }
@@ -158,6 +162,45 @@ function edit(task){
     throw Error('edit without any args!');
   }
 }
+
+// for replace and remove and insert in place
+String.prototype.splice = function(idx, rem, str) {
+  return this.slice(0, idx) + str + this.slice(idx + Math.abs(rem));
+};
+
+/**
+ * mark task as done 
+ *
+ * @returns {void}
+ */
+
+function check(state){
+ 
+  if(state ){
+    listtask[state-1] = listtask[state-1].splice(1,1,"✓");
+  }else{
+    throw Error('No task was given!');
+  }
+}
+
+
+/**
+ * mark task as not done 
+ *
+ * @returns {void}
+ */
+
+function unCheck(state){
+ 
+  if(state ){
+    listtask[state-1] = listtask[state-1].splice(1,1," ");
+  }else{
+    throw Error('eNo task was given!');
+  }
+}
+
+
+
 
 /**
  * Exits the application

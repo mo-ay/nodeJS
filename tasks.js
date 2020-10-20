@@ -1,4 +1,28 @@
-var listtask = ['[ ] excersice','[✓] sleep'];
+const fs = require("fs"); 
+ var listtask = [];  
+
+ //catch any error
+ try{
+// Read database.json file 
+fs.readFile("database.json", 'utf8',function(err, data) { 
+      
+    // Check for errors 
+    if (err) throw err; 
+   /* no need for it since we follo the list style 
+   from the part 5 BECAUSE THE QAUSTION WAS NOT CLEAR HONSLY
+    // Converting to string 
+   // const tasks = JSON.stringify(data); 
+     */ 
+    listtask = data.split(',');
+    console.log(listtask); // Print tasks 
+
+}); 
+ }catch(err){
+   console.log("No tasks file!");
+  
+ }
+
+
 /**
  * Starts the application
  * This is the function that is run when the app starts
@@ -13,8 +37,10 @@ function startApp(name){
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
   process.stdin.on('data', onDataReceived);
+  
   console.log(`Welcome to ${name}'s application!`)
   console.log("--------------------")
+ 
 }
 
 
@@ -134,7 +160,7 @@ function add(task){
  * @returns {void}
  */
 function remove(task){
-  if(task < 0 || task > listtask.length-1){
+  if(task < 0 || task > listtask.length){
     console.log("out of range!" );
     return;
   }
@@ -209,6 +235,11 @@ function unCheck(state){
  * @returns {void}
  */
 function quit(){
+ 
+  fs.writeFileSync('database.json', listtask.toString(), function (err) {
+  if (err) return console.log(err);
+  console.log('couldent write to file!');
+  });
   console.log('Quitting now, goodbye!')
   process.exit();
 }

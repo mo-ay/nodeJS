@@ -46,8 +46,10 @@ function onDataReceived(text) {
     list();
   }else if(text[0] === 'add'){
     add(text[1]);
-  } else if(text[0 ]== 'remove'){
+  } else if(text[0 ]=== 'remove'){
     remove(text[1]);
+  }else if (text[0] === 'edit'){
+    edit(text[1]);
   }else{
     unknownCommand(text);
   }
@@ -130,6 +132,7 @@ function remove(task){
     console.log("out of range!");
     return;
   }
+
   if(task == 1){
     listtask.unshift();
   }else if(task == 2){
@@ -138,6 +141,23 @@ function remove(task){
     listtask.pop();
   }
 }
+
+
+/**
+ * edit task from tasks list 
+ *
+ * @returns {void}
+ */
+function edit(task){
+  if(task == "new"){
+    listtask[listtask.length-1] = "new text";
+  }else if(task == 1){
+    listtask[1] = "new text";
+  }else{
+    throw Error('edit without any args!');
+  }
+}
+
 /**
  * Exits the application
  *

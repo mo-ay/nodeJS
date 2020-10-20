@@ -81,6 +81,7 @@ function hello(text){
  */
 function help(){
   let helpCommands = 'hello     ---> print hello \n';
+  helpCommands += ' hello X     ---> print hello X \n';
   helpCommands += 'quit / exit  ---> exit the program \n';
   helpCommands += 'help         ---> to show all commands can be used';
   console.log(helpCommands);

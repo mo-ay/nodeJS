@@ -126,6 +126,10 @@ function add(task){
  * @returns {void}
  */
 function remove(task){
+  if(task < 0 || task > listtask.length-1){
+    console.log("out of range!");
+    return;
+  }
   if(task == 1){
     listtask.unshift();
   }else if(task == 2){

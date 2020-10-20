@@ -128,7 +128,7 @@ function remove(task){
   }else if(task == 2){
     listtask.splice(1,1)
   }else{
-    throw Error('cannot add empty task!');
+    listtask.pop();
   }
 }
 /**

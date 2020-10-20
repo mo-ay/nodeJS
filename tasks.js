@@ -68,6 +68,12 @@ function unknownCommand(c){
 function hello(){
   console.log('hello!')
 }
+
+/**
+ * print all commands 
+ *
+ * @returns {void}
+ */
 function help(){
   let helpCommands = 'hello     ---> print hello \n';
   helpCommands += 'quit / exit  ---> exit the program \n';

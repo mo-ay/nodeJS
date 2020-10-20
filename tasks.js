@@ -129,17 +129,17 @@ function add(task){
  * @returns {void}
  */
 function remove(task){
-  if(task !=1 && task != 2 && task){
+  if(task < 0 || task > listtask.length-1){
     console.log("out of range!" );
     return;
   }
 
-  if(task == 1){
-    listtask.shift();
-  }else if(task == 2){
-    listtask.splice(1,1)
-  }else{
-    listtask.pop();
+  if (task) {
+    // fix index
+    listtask.splice(task -1 , 1)
+  }
+  else {
+    listtask.splice(listtask.length - 1, 1)
   }
 }
 

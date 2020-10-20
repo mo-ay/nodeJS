@@ -104,8 +104,9 @@ function help(){
  */
 
 function list(){
-  
-  console.log(listtask)
+  for (let index = 0; index < listtask.length; index++){
+    console.log(index + "- " + listtask[index]);
+  } 
 }
 
 /**

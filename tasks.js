@@ -1,4 +1,4 @@
-
+var listtask = ['excersice','sleep'];
 /**
  * Starts the application
  * This is the function that is run when the app starts
@@ -44,6 +44,8 @@ function onDataReceived(text) {
     help();
   }else if(text[0] === 'list'){
     list();
+  }else if(text[0] === 'add'){
+    add(text[1]);
   }else{
     unknownCommand(text);
   }
@@ -95,10 +97,22 @@ function help(){
  */
 
 function list(){
-  listtask = ['excersice','sleep'];
+  
   console.log(listtask)
 }
 
+/**
+ * add task to tasks list 
+ *
+ * @returns {void}
+ */
+function add(task){
+  if(task){
+    listtask.push(task);
+  }else{
+    throw Error('cannot add empty task!');
+  }
+}
 
 /**
  * Exits the application

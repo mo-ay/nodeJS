@@ -86,6 +86,9 @@ function hello(text){
  */
 function help(){
   let helpCommands = 'hello     ---> print hello \n';
+  helpCommands += 'list         ---> print all tasks \n';
+  helpCommands += 'add x        ---> add a task to the list tasks \n';
+  helpCommands += 'remove / remove x  remove will remove last element of tasks list / remove x will remove a certen index of array list \n';
   helpCommands += ' hello X     ---> print hello X \n';
   helpCommands += 'quit / exit  ---> exit the program \n';
   helpCommands += 'help         ---> to show all commands can be used';

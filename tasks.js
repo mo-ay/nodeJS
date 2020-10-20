@@ -46,6 +46,8 @@ function onDataReceived(text) {
     list();
   }else if(text[0] === 'add'){
     add(text[1]);
+  } else if(text[0 ]== 'remove'){
+    remove(text[1]);
   }else{
     unknownCommand(text);
   }
@@ -114,6 +116,21 @@ function add(task){
   }
 }
 
+
+/**
+ * remmove task from tasks list 
+ *
+ * @returns {void}
+ */
+function remove(task){
+  if(task == 1){
+    listtask.unshift();
+  }else if(task == 2){
+    listtask.splice(1,1)
+  }else{
+    throw Error('cannot add empty task!');
+  }
+}
 /**
  * Exits the application
  *

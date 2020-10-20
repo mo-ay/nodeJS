@@ -42,7 +42,8 @@ function onDataReceived(text) {
     hello(text[1]);
   } else if(text[0] === 'help'){
     help();
-
+  }else if(text[0] === 'list'){
+    list();
   }else{
     unknownCommand(text);
   }
@@ -85,6 +86,17 @@ function help(){
   helpCommands += 'quit / exit  ---> exit the program \n';
   helpCommands += 'help         ---> to show all commands can be used';
   console.log(helpCommands);
+}
+
+/**
+ * print all tasks 
+ *
+ * @returns {void}
+ */
+
+function list(){
+  listtask = ['excersice','sleep'];
+  console.log(listtask)
 }
 
 

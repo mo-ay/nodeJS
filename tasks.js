@@ -1,4 +1,4 @@
-var listtask = ['excersice','sleep'];
+var listtask = ['[ ] excersice','[✓] sleep'];
 /**
  * Starts the application
  * This is the function that is run when the app starts
@@ -116,7 +116,7 @@ function list(){
  */
 function add(task){
   if(task){
-    listtask.push(task);
+    listtask.push( "[ ] "+task);
   }else{
     throw Error('cannot add empty task!');
   }
@@ -129,13 +129,13 @@ function add(task){
  * @returns {void}
  */
 function remove(task){
-  if(task < 0 || task > listtask.length-1){
-    console.log("out of range!");
+  if(task !=1 && task != 2 && task){
+    console.log("out of range!" );
     return;
   }
 
   if(task == 1){
-    listtask.unshift();
+    listtask.shift();
   }else if(task == 2){
     listtask.splice(1,1)
   }else{
